@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "187213188754",
+    "project_id": "sistemas-de-informacion-621ff",
+    "storage_bucket": "sistemas-de-informacion-621ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187213188754:android:8ecd3b20cfdbcd3a8da04b",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "187213188754-j93ia09tft60iq3e6ch4gfsu619ke9n0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_application_1",
+            "certificate_hash": "c7b6b0c0a8d80b43f222058098115ad70d81dbbd"
+          }
+        },
+        {
+          "client_id": "187213188754-odfhss7907r9ka7m8uh3ap5e8bljb4ff.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4FQ61g6t1xrOsSTqMtW-FIgMUnC9jrzk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "187213188754-odfhss7907r9ka7m8uh3ap5e8bljb4ff.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
