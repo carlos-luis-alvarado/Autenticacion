@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/navegation/routes.dart';
 import 'package:flutter_application_1/src/ui/juego/quizpage.dart';
 import 'package:flutter/services.dart';
 //import 'package:flutter_meedu/router.dart' as router;
@@ -158,7 +159,9 @@ showDialogFunc(context, images, nom, desc) {
                     height: 10,
                   ),
                   ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.entregaP);
+                    },
                     icon: const Icon(
                       Icons.access_alarm,
                     ),
