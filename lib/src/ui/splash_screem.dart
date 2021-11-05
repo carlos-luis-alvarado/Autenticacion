@@ -17,7 +17,7 @@ class SplashScreem extends StatelessWidget {
               height: 24,
             ),
             Image.asset(
-              'assets/crearlogo.png',
+              'images/crearlogo.png',
               width: 200,
               height: 200,
             ),

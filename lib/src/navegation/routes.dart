@@ -3,6 +3,8 @@ import 'package:flutter_application_1/src/ui/email_create_screem.dart';
 import 'package:flutter_application_1/src/ui/email_signin_screem.dart';
 import 'package:flutter_application_1/src/ui/home_screem.dart';
 import 'package:flutter_application_1/src/ui/intro_screem.dart';
+import 'package:flutter_application_1/src/ui/juego/home.dart';
+import 'package:flutter_application_1/src/ui/premios.dart';
 import 'package:flutter_application_1/src/ui/profile.dart';
 import 'package:flutter_application_1/src/ui/splash_screem.dart';
 
@@ -13,6 +15,8 @@ class Routes {
   static const createAccount = '/createAccount';
   static const signInEmail = '/signInEmail';
   static const profile = '/profile';
+  static const homeJuego = '/homeJuego';
+  static const premiosJ = '/premios';
 
   static Route routes(RouteSettings routeSettings) {
     switch (routeSettings.name) {
@@ -28,6 +32,10 @@ class Routes {
         return _buildRoute(EmailSignIn.create);
       case profile:
         return _buildRoute(Profile.create);
+      case homeJuego:
+        return _buildRoute(homepage.create);
+      case premiosJ:
+        return _buildRoute(premios.create);
       default:
         throw Exception('Route name not exists');
     }
@@ -35,4 +43,5 @@ class Routes {
 
   static MaterialPageRoute _buildRoute(Function build) =>
       MaterialPageRoute(builder: (context) => build(context));
+  //hola
 }

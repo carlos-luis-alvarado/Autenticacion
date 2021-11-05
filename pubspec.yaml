@@ -28,6 +28,10 @@ dependencies:
   cached_network_image: ^3.1.0
   
   cupertino_icons: ^1.0.2
+  
+  flutter_meedu: ^4.1.0
+  card_swiper : ^1.0.4
+  sign_button: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -35,14 +39,20 @@ dev_dependencies:
   
 
   
-  flutter_lints: ^1.0.0
+  flutter_lints: ^1.0.4
 
 
 flutter:
   assets:
     - assets/
+    - images/
+
+fonts:
+     - family: Architects Daughter
+       fonts:
+         - asset: assets\fonts\ArchitectsDaughter-Regular.ttf
 
  
-  uses-material-design: true
+uses-material-design: true
   
   

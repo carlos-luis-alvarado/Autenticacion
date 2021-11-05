@@ -74,7 +74,7 @@ class _MyUserSectionState extends State<_MyUserSection> {
   //cuando el usuario es nuevo
   @override
   Widget build(BuildContext context) {
-    Widget image = Image.asset('assets/perfil.png', fit: BoxFit.fill);
+    Widget image = Image.asset('images/perfil.png', fit: BoxFit.fill);
     //cuando seleccionamos una imagen
     if (widget.pickedImage != null) {
       image = Image.file(

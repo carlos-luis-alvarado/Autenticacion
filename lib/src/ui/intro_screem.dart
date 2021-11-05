@@ -36,11 +36,11 @@ class _IntroPager extends HookWidget {
         child: PageView(
           children: [
             _DescriptionPage(
-                text: exampleText, imagePath: 'assets/Imagen1.jpg'),
+                text: exampleText, imagePath: 'images/Imagen1.jpg'),
             _DescriptionPage(
-                text: exampleText, imagePath: 'assets/Imagen2.jpg'),
+                text: exampleText, imagePath: 'images/Imagen2.jpg'),
             _DescriptionPage(
-                text: exampleText, imagePath: 'assets/Imagen3.jpg'),
+                text: exampleText, imagePath: 'images/Imagen3.jpg'),
             _LoginPage(),
           ],
         ),
@@ -101,7 +101,7 @@ class _LoginPage extends StatelessWidget {
       child: Column(
         children: [
           Image.asset(
-            'assets/crearlogo.png',
+            'images/crearlogo.png',
             width: 150,
             height: 150,
           ),
@@ -126,7 +126,7 @@ class _LoginPage extends StatelessWidget {
               children: [
                 _LoginButton(
                   text: 'Ingresar de forma anonima',
-                  imagePath: 'assets/anonimo.png',
+                  imagePath: 'images/anonimo.png',
                   color: Colors.grey.shade700,
                   colorText: Colors.white,
                   onTap: () => context.read<AuthCubit>().signInAnonymously(),
@@ -136,7 +136,7 @@ class _LoginPage extends StatelessWidget {
                 ),
                 _LoginButton(
                   text: 'Ingresar con Google',
-                  imagePath: 'assets/gmail.png',
+                  imagePath: 'images/gmail.png',
                   color: Colors.white,
                   colorText: Colors.black,
                   onTap: () => context.read<AuthCubit>().signInWithGoogle(),
@@ -146,7 +146,7 @@ class _LoginPage extends StatelessWidget {
                 ),
                 _LoginButton(
                     text: 'Ingresar  con Facebook',
-                    imagePath: 'assets/facebook.png',
+                    imagePath: 'images/facebook.png',
                     color: Colors.lightBlue.shade900,
                     colorText: Colors.white,
                     onTap: () =>
@@ -156,7 +156,7 @@ class _LoginPage extends StatelessWidget {
                 ),
                 _LoginButton(
                   text: 'Ingresar con Email',
-                  imagePath: 'assets/email.png',
+                  imagePath: 'images/email.png',
                   color: Colors.white,
                   colorText: Colors.black,
                   onTap: () {
