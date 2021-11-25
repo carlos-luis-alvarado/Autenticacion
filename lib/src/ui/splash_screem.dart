@@ -8,22 +8,16 @@ class SplashScreem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.amber.shade300,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            //CircularProgressIndicator(),
-            SizedBox(
-              height: 24,
-            ),
-            Image.asset(
-              'images/crearlogo.png',
-              width: 200,
-              height: 200,
-            ),
-          ],
+      body: const Center(
+            child: Text('¡Bienvenidos!',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'Architects Daughter',
+                  fontSize: 35.0
+                ),
+              ),
+
         ),
-      ),
     );
   }
 }

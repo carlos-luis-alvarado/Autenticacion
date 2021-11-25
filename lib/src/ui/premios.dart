@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/navegation/routes.dart';
-import 'package:flutter_application_1/src/ui/juego/quizpage.dart';
-import 'package:flutter/services.dart';
-//import 'package:flutter_meedu/router.dart' as router;
 
 class premios extends StatefulWidget {
   static Widget create(BuildContext context) => premios();
@@ -44,6 +41,8 @@ class _premiosState extends State<premios> {
           '¡Reclama tu premio!',
           style: TextStyle(
             color: Colors.black,
+            fontFamily: 'Architects Daughter',
+            fontSize: 25.0,
           ),
         ),
         backgroundColor: Colors.yellow.shade500,
@@ -77,20 +76,20 @@ class _premiosState extends State<premios> {
                           children: <Widget>[
                             Text(
                               nom[index],
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 20,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             Container(
                               width: width,
                               child: Text(
                                 desc[index],
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 15,
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
