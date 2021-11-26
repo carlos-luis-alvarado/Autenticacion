@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/navegation/routes.dart';
 import 'package:flutter_application_1/src/ui/juego/home.dart';
 
 class resultpage extends StatefulWidget {
@@ -123,9 +124,8 @@ class _resultpageState extends State<resultpage> {
                   ),
 
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => homepage(),
-                    ));
+                    Navigator.pushNamed(context, Routes.homeJuego);
+                    //homepage();
                   },
                   child: Text(
                     "VOLVER A JUGAR",
