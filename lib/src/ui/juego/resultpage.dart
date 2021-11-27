@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/bloc/auth_cubit.dart';
 import 'package:flutter_application_1/src/navegation/routes.dart';
-import 'package:flutter_application_1/src/ui/juego/home.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class resultpage extends StatefulWidget {
   int marks = 0;
@@ -11,6 +13,7 @@ class resultpage extends StatefulWidget {
 }
 
 class _resultpageState extends State<resultpage> {
+  final firestoreInstance = FirebaseFirestore.instance;
   List<String> images = [
     "images/success.png",
     "images/puntos_altos.png",
@@ -41,6 +44,7 @@ class _resultpageState extends State<resultpage> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: Colors.orangeAccent,
       body: Column(
@@ -51,7 +55,7 @@ class _resultpageState extends State<resultpage> {
               flex: 2,
               child: Container(
                 alignment: Alignment.center,
-                child: Text(
+                child: const Text(
                   "RESULTADO",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -85,7 +89,7 @@ class _resultpageState extends State<resultpage> {
                       ),
                     ),
                     Padding(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           vertical: 5.0,
                           horizontal: 15.0,
                         ),
@@ -93,7 +97,7 @@ class _resultpageState extends State<resultpage> {
                           child: Text(
                             message,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20.0,
                               fontFamily: "Quando",
@@ -127,7 +131,7 @@ class _resultpageState extends State<resultpage> {
                     Navigator.pushNamed(context, Routes.homeJuego);
                     //homepage();
                   },
-                  child: Text(
+                  child: const Text(
                     "VOLVER A JUGAR",
                     style: TextStyle(
                       fontSize: 20.0,
@@ -141,4 +145,14 @@ class _resultpageState extends State<resultpage> {
       ),
     );
   }
+  void inputData(marks) {
+    BlocProvider.of<AuthCubit>(context).state as AuthSignedIn ;//invocamos
+    final usu=(context.read<AuthCubit>().state as AuthSignedIn).user;//obtenemos el usuario activo
+    firestoreInstance //modificamos
+        .collection("user")
+        .doc(usu.uid)
+        .update({"puntos": marks}).then((_) {
+      });
+
+        }
 }

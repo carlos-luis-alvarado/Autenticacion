@@ -2,12 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_1/src/bloc/auth_cubit.dart';
 import 'package:flutter_application_1/src/bloc/my_user_cubic.dart';
 import 'package:flutter_application_1/src/model/user.dart';
 import 'package:flutter_application_1/src/repository/implementations/my_user_repository.dart';
 import 'package:flutter_application_1/src/ui/juego/quizpage.dart';
-import 'package:flutter_application_1/src/ui/juego/resultpage.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class homepage extends StatefulWidget {
