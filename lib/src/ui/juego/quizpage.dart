@@ -106,6 +106,7 @@ class _quizpageState extends State<quizpage> {
       }
     }
     print(random_array);
+    i=random_array[0];
   }
 
   // La función anterior no devuelve un rray con el orden de las preguntas

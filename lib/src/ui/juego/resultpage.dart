@@ -145,14 +145,19 @@ class _resultpageState extends State<resultpage> {
       ),
     );
   }
-  void inputData(marks) {
-    BlocProvider.of<AuthCubit>(context).state as AuthSignedIn ;//invocamos
-    final usu=(context.read<AuthCubit>().state as AuthSignedIn).user;//obtenemos el usuario activo
-    firestoreInstance //modificamos
+  
+  void inputData(marks)async {   
+    final usu=(context.read<AuthCubit>().state as AuthSignedIn).user;
+
+    DocumentSnapshot<Map<String, dynamic>> resultado= await firestoreInstance.collection("user").doc(usu.uid).get();
+    //convertimos ese documento en un map
+    final Map<String, dynamic> doc = resultado.data() as Map<String, dynamic> ;
+    //del map obtenemos los puntos :"( .....
+    firestoreInstance
         .collection("user")
         .doc(usu.uid)
-        .update({"puntos": marks}).then((_) {
+        .update({"puntos": doc['puntos']+marks}).then((_) {
+          print('exito');
       });
-
-        }
+   }
 }

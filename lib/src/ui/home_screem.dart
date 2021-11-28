@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/bloc/auth_cubit.dart';
-import 'package:flutter_application_1/src/bloc/my_user_cubic.dart';
 import 'package:flutter_application_1/src/navegation/routes.dart';
-import 'package:flutter_application_1/src/ui/profile.dart';
 import 'package:flutter_application_1/src/widgets/card_swiper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 //-----------------------------
@@ -53,7 +51,7 @@ class _ButtonLogin extends StatelessWidget {
       return Column(children: <Widget>[
         ElevatedButton.icon(
             onPressed: () {
-              Navigator.pushNamed(context, Routes.homeJuego);
+              Navigator.pushNamed(context, Routes.initJuego);
             },
             icon: const Icon(
               Icons.input_outlined,
