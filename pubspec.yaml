@@ -9,6 +9,7 @@ version: 1.0.0+1
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=2.0.0"
 
 
 dependencies:
@@ -45,16 +46,17 @@ dev_dependencies:
 
 
 flutter:
+  uses-material-design: true
   assets:
     - assets/
     - images/
 
 fonts:
-     - family: Architects Daughter
-       fonts:
-         - asset: assets\fonts\ArchitectsDaughter-Regular.ttf
+  - family: Architects Daughter
+    fonts:
+      - asset: assets\fonts\ArchitectsDaughter-Regular.ttf
 
  
-uses-material-design: true
+
   
   
