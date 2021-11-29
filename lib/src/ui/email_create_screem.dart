@@ -10,6 +10,7 @@ class EmailCreate extends StatefulWidget {
 }
 
 class _EmailCreateState extends State<EmailCreate> {
+  int _paginaActual=0;
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -19,6 +20,7 @@ class _EmailCreateState extends State<EmailCreate> {
   }
 
   String? passwordValidator(String? value) {
+    
     if (value == null || value.isEmpty) return 'This is a requerid';
     if (value.length < 6) return 'Password should be at last 6 letters';
     if (_passwordController.text != _repeatPasswordController.text)
@@ -28,66 +30,141 @@ class _EmailCreateState extends State<EmailCreate> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
-        title: Text('Crear cuenta'),
+        title: const Text('Crear cuenta'),
+        backgroundColor: Colors.green.shade500,
+        centerTitle: true,
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
+        onTap: (index)=>setState(()=> _paginaActual=index),
+         currentIndex: _paginaActual,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.person),label: 'login'),
+          BottomNavigationBarItem(icon: Icon(Icons.supervised_user_circle),label: 'login')
+        ],
+  
+        backgroundColor: Colors.green.shade500,
+        ),
       body: BlocBuilder<AuthCubit, AuthState>(
         builder: (_, state) {
-          return Form(
+          return SafeArea(
+              child: Scaffold(
+              backgroundColor: Colors.amber.shade100,
+              body: Center(
+                child: Form(
             key: _formKey,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Column(
+              child: GestureDetector(
+              onTap: ()=>FocusScope.of(context).unfocus(),
+              child:ListView(
                 children: [
+                  const Flexible(   //se define el logo
+              child: Image(
+                image: AssetImage(
+                  'images/crearlogo.png', 
+                ),
+                width: 100.0,
+                height: 150.0,
+              ),
+            ),
+            const SizedBox(height: 10.0,width: double.infinity,),//se define nombre de la app
+            const Center(
+              child:  Text('AVJujuy',
+              style: TextStyle(fontFamily: 'Architects Daughter', color: Colors.black,fontSize: 30.0,),),
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
                   if (state is AuthSigningIn)
-                    Center(
+                    const Center(
                       child: CircularProgressIndicator(),
                     ),
                   if (state is AuthError)
                     Text(state.message,
-                        style: TextStyle(color: Colors.red, fontSize: 24)),
+                        style: const TextStyle(color: Colors.red, fontSize: 24)),
                   TextFormField(
                     controller: _emailController,
-                    decoration: InputDecoration(labelText: 'Email'),
+                    decoration: const InputDecoration(
+                      icon:Icon(Icons.email),
+                          labelText: 'Email',
+                          hintText:'ejemplo@correo.com',
+                      ),
                     validator: emailValidator,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   TextFormField(
                     controller: _passwordController,
-                    decoration: InputDecoration(labelText: 'Password'),
+                     obscureText:true,
+                    decoration: const InputDecoration(
+                      labelText: 'Password',
+                          hintText:'Password',
+                          icon: Icon(Icons.lock_outline),
+                      ),
                     validator: passwordValidator,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   TextFormField(
                     controller: _repeatPasswordController,
-                    decoration: InputDecoration(labelText: 'Repeat Password'),
+                     obscureText:true,
+                    decoration: const InputDecoration(
+                      labelText: 'Repeat Password',
+                          hintText:'Repeat Password',
+                          icon: Icon(Icons.lock_outline),
+                      ),
                     validator: passwordValidator,
                   ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Center(
-                    child: ElevatedButton(
-                      child: Text('Create'),
-                      onPressed: () {
-                        if (_formKey.currentState?.validate() == true) {
-                          context
-                              .read<AuthCubit>()
-                              .createUserWithEmailAndPassword(
-                                  _emailController.text,
-                                  _passwordController.text);
-                        }
-                      },
+                    child:_buttonRegister()
                     ),
-                  )
+                  
                 ],
               ),
-            ),
-          );
+            ),)
+          ))));
         },
       ),
     );
+    
+  }
+  Widget _buttonRegister() {
+    return StreamBuilder(
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+      return ElevatedButton.icon(
+          onPressed: (){
+            if (_formKey.currentState?.validate() == true) {
+              context
+                  .read<AuthCubit>()
+                  .createUserWithEmailAndPassword(
+                      _emailController.text,
+                      _passwordController.text);
+            }
+          },
+          icon: const Icon(
+            Icons.app_registration,
+          ),
+          label: const Text('Registrarse'),
+          style: ElevatedButton.styleFrom(
+            fixedSize: const Size(150, 40),
+            primary: Colors.green.shade500,
+            shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50))
+          )); 
+    });
+  }
+  void ontabTapped(int index){
+
   }
 }

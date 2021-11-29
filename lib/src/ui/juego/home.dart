@@ -31,9 +31,10 @@ class _homepageState extends State<homepage> {
         appBar: AppBar(
           backgroundColor: Colors.amber.shade700,
           title: const Text(
-            "Visita Jujuy¡!",
+            "REGIÓN QUEBRADA",
             style: TextStyle(
               fontFamily: "Quando",
+              color: Colors.black,
             ),
           ),
         ),
@@ -65,63 +66,58 @@ class _MyUserSection extends StatefulWidget {
 }
 
 class _MyUserSectionState extends State<_MyUserSection> {
-  int puntosReq1 = 1000;
+  int puntosReq1 = 0000;
   int puntosReq2 = 2000;
   int puntosReq3 = 3000;
   int puntosReq4 = 4000;
   int puntosReq5 = 5000;
   int puntosDisp = 0;
   //int numero = resultpage(null).obtenerNumero();
-
   final _puntosController = TextEditingController();
-
   @override
   void initState() {
     _puntosController.text = widget.user?.puntos.toString() ?? '';
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     puntosDisp = int.parse(_puntosController.text);
     return (ListView(
       children: <Widget>[
-        TextField(
-          controller: _puntosController,
-          keyboardType: TextInputType.number,
-          decoration: InputDecoration(labelText: 'Puntos'),
+        Container(
+          padding: const EdgeInsets.all(5.0),
+          margin: const EdgeInsets.all( 5.0),
+          decoration: BoxDecoration(color: Colors.amber.shade400, ),
+          child: TextField(
+            controller: _puntosController,
+            keyboardType: TextInputType.number,
+            decoration: const InputDecoration(labelText: 'PUNTOS ACUMULADOS'),
+          ),
         ),
-        customcard("NIVEL 1", images[0], des[0], puntosDisp, puntosReq1),
-        customcard("NIVEL 2", images[1], des[1], puntosDisp, puntosReq2),
-        customcard("NIVEL 3", images[2], des[2], puntosDisp, puntosReq3),
-        customcard("NIVEL 4", images[3], des[3], puntosDisp, puntosReq4),
-        customcard("NIVEL 5", images[4], des[4], puntosDisp, puntosReq5),
+
+        Image.asset(
+            'images/coyita2.png',
+            width: 200,
+            height: 200,
+          ),
+        customcard("NIVEL 1", images[0], puntosDisp, puntosReq1),
+        customcard("NIVEL 2", images[1], puntosDisp, puntosReq2),
+        customcard("NIVEL 3", images[2], puntosDisp, puntosReq3),
       ],
     ));
   }
-
   List<String> images = [
     "images/carnaval.jpg",
     "images/cardon.jpg",
-    "images/llama1.jpg",
-    "images/pachamama.jpg",
-    "images/vicuñas.jpg",
+    "images/Imagen1.jpg",
   ];
-
-  List<String> des = [
-    //presentación de los bloques de la pantalla
-    "Humahuaca\n... \n... !!",
-    "Tilcara\n ...!!",
-    "Purmamarca\n... !",
-    "Abrapampa\n.. ",
-    "El hornocal\n...!",
-  ];
-  Widget customcard(String langname, String image, String des, int puntosDisp,
+  Widget customcard(String langname, String image, int puntosDisp,
       int puntosReq) {
     return Padding(
+      
       padding: const EdgeInsets.symmetric(
-        vertical: 20.0,
-        horizontal: 30.0,
+        vertical: 6.0,
+        horizontal: 50.0,
       ),
       child: InkWell(
         onTap: () {
@@ -133,66 +129,66 @@ class _MyUserSectionState extends State<_MyUserSection> {
             showDialog(
                 context: context,
                 builder: (BuildContext context) {
-                  return AlertDialog(
+                  return const AlertDialog(
                     title: Text('Puntos no suficientes para este nivel...'),
                   );
                 });
           }
         },
         child: Material(
-          color: Colors.green[700],
+          color: Colors.blue,//green[700],
           elevation: 10.0,
           borderRadius: BorderRadius.circular(25.0),
           child: Container(
             child: Column(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10.0,
-                  ),
-                  child: Material(
-                    elevation: 5.0,
-                    borderRadius: BorderRadius.circular(100.0),
-                    child: Container(
-                      // changing from 200 to 150 as to look better
-                      height: 150.0,
-                      width: 150.0,
-                      child: ClipOval(
-                        child: Image(
-                          fit: BoxFit.cover,
-                          image: AssetImage(
-                            image,
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10.0,
+                      ),
+                      child: Material(
+                        elevation: 5.0,
+                        borderRadius: BorderRadius.circular(100.0),
+                        child: Container(
+                          // changing from 200 to 150 as to look better
+                          height: 45.0,
+                          width: 45.0,
+                          child: ClipOval(
+                            child: Image(
+                              fit: BoxFit.cover,
+                              image: AssetImage(
+                                image,
+                              ),
+                            ),
                           ),
                         ),
                       ),
                     ),
+                    Column(
+                      children: [
+                        Text(
+                            langname ,
+                            style: const TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.white,
+                              fontFamily: "Quando",
+                              fontWeight: FontWeight.w700,
+                            ),
+                        ),
+                        Text(
+                            'Puntos necesarios : ' + puntosReq.toString(),
+                            style: const TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.black,
+                              fontFamily: "Quando",
+                              fontWeight: FontWeight.w700,
+                            ),
                   ),
-                ),
-                Center(
-                  child: Text(
-                    langname +
-                        ' ' +
-                        'Puntos necesarios : ' +
-                        puntosReq.toString(),
-                    style: const TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.white,
-                      fontFamily: "Quando",
-                      fontWeight: FontWeight.w700,
+                      ],
                     ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(20.0),
-                  child: Text(
-                    des,
-                    style: const TextStyle(
-                        fontSize: 18.0,
-                        color: Colors.white,
-                        fontFamily: "Alike"),
-                    maxLines: 5,
-                    textAlign: TextAlign.justify,
-                  ),
+                  ],
                 ),
               ],
             ),

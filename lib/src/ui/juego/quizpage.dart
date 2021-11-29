@@ -263,7 +263,7 @@ class _quizpageState extends State<quizpage> {
                 absorbing: disableAnswer,
                 child: Container(
                   padding: EdgeInsets.all(25.0),
-                  margin: EdgeInsets.all(40.0),
+                  margin: EdgeInsets.all(25.0),
                   decoration: BoxDecoration(
                     color: Colors.amber.shade400,
                     //color: Colors.amber.shade200,

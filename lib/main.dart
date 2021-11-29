@@ -16,7 +16,7 @@ void main() async {
   runApp(MultiBlocProvider(
     providers: [
     BlocProvider(
-    create: (_) => authCubit..init(),),
+      create: (_) => authCubit..init(),),
     BlocProvider(
       create: (_) => MyUserCubic(MyUserRepository())..getMyUser(),
     )

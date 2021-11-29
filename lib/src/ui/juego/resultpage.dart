@@ -128,7 +128,7 @@ class _resultpageState extends State<resultpage> {
                   ),
 
                   onPressed: () {
-                    Navigator.pushNamed(context, Routes.homeJuego);
+                    Navigator.pushNamed(context, Routes.initJuego);
                     //homepage();
                   },
                   child: const Text(
@@ -148,7 +148,6 @@ class _resultpageState extends State<resultpage> {
   
   void inputData(marks)async {   
     final usu=(context.read<AuthCubit>().state as AuthSignedIn).user;
-
     DocumentSnapshot<Map<String, dynamic>> resultado= await firestoreInstance.collection("user").doc(usu.uid).get();
     //convertimos ese documento en un map
     final Map<String, dynamic> doc = resultado.data() as Map<String, dynamic> ;

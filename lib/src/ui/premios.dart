@@ -1,37 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/navegation/routes.dart';
+import 'package:flutter_application_1/src/ui/premios/MyLogic.dart';
+import 'package:flutter_application_1/src/ui/premios/local.dart';
 
-class premios extends StatefulWidget {
+class premios extends StatefulWidget { 
   static Widget create(BuildContext context) => premios();
   @override
   _premiosState createState() => _premiosState();
 }
 
 class _premiosState extends State<premios> {
-  var images = [
-    "images/descarga.jfif",
-    "images/golosinas.jpg",
-    "images/bueñuelos.jpeg",
-    "images/bebidas.jfif",
-    "images/comida.jpg",
-  ];
-
-  var nom = [
-    "¡Helados!\n",
-    "¡Golosinas!\n",
-    "¡Buñuelos, bollos y otros!\n",
-    "¡Gaseosas!\n",
-    "¡Restaurantes!\n",
-  ];
-
-  var desc = [
-    "Por 100 puntos obtenes 20% de descuento en heladeria Grido de la Region Quebrada!\n",
-    "Por 100 puntos obtenes 15% de descuento en Golosinas del Local XX Region Quebrada!\n",
-    "Por 100 puntos obtenes 30% de descuento en Meriendas del Local XX de la Region Quebrada!\n",
-    "Por 100 puntos obtenes 20% de descuento en bebidas del Local XX de la Region Quebrada!\n",
-    "Por 100 puntos obtenes 20% de descuento en almuerzo/cena del restarante XX de la Region Quebrada!\n",
-  ];
-
+  final myLogic=MyLogic();
+  @override
+  void initState(){
+    myLogic.getlocals();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width * 0.5;
@@ -48,12 +32,15 @@ class _premiosState extends State<premios> {
         backgroundColor: Colors.yellow.shade500,
       ),
       backgroundColor: Colors.yellow.shade200,
-      body: ListView.builder(
-          itemCount: images.length,
-          itemBuilder: (context, index) {
+      body:ValueListenableBuilder<List<local>>(
+        valueListenable: myLogic.locales,
+        builder:(context,locales,_) {
+           return locales!=[]? ListView.builder(
+              itemCount:locales.length,
+              itemBuilder:(_,index){
             return GestureDetector(
               onTap: () {
-                showDialogFunc(context, images[index], nom[index], desc[index]);
+                showDialogFunc(context, locales[index].imagen, locales[index].nombre, locales[index].descripcion);
               },
               child: Card(
                 child: Material(
@@ -66,7 +53,7 @@ class _premiosState extends State<premios> {
                         height: 80.0,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(25),
-                          child: Image.asset(images[index]),
+                          child: Image.network(locales[index].imagen),
                         ),
                       ),
                       Padding(
@@ -75,7 +62,7 @@ class _premiosState extends State<premios> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              nom[index],
+                              locales[index].nombre,
                               style: const TextStyle(
                                 fontSize: 20,
                                 color: Colors.black,
@@ -88,7 +75,7 @@ class _premiosState extends State<premios> {
                             Container(
                               width: width,
                               child: Text(
-                                desc[index],
+                                locales[index].descripcion,
                                 style: const TextStyle(
                                   fontSize: 15,
                                   color: Colors.black,
@@ -104,7 +91,9 @@ class _premiosState extends State<premios> {
                 ),
               ),
             );
-          }),
+          }
+          ):const Center(child: CircularProgressIndicator(),);
+        },)
     );
   }
 }
@@ -121,7 +110,7 @@ showDialogFunc(context, images, nom, desc) {
               borderRadius: BorderRadius.circular(20.0),
               color: Colors.white,
             ),
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             width: MediaQuery.of(context).size.width * 10.0,
             height: 400,
             child: Column(
@@ -129,32 +118,32 @@ showDialogFunc(context, images, nom, desc) {
                 children: <Widget>[
                   ClipRRect(
                     borderRadius: BorderRadius.circular(25),
-                    child: Image.asset(
-                      images,
-                      width: 150,
-                      height: 150,
-                    ),
-                  ),
-                  SizedBox(
+                    child: Image.network(
+                        images,
+                        width: 150,
+                        height: 150,
+                        ),
+                     ),
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(nom,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(
                     desc,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 15,
                       color: Colors.black,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   ElevatedButton.icon(

@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_application_1/src/bloc/my_user_cubic.dart';
 import 'package:flutter_application_1/src/model/user.dart';
 import 'package:flutter_application_1/src/navegation/routes.dart';
@@ -19,6 +18,7 @@ class region extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  
     return Scaffold(
       appBar: AppBar(
              title: const Text('¡Pulsa una región!',
@@ -67,6 +67,7 @@ class _region1 extends State<_MyUserSection > {
 
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       //height: MediaQuery.of(context).size.height - 200.0,
       decoration: const BoxDecoration(
@@ -107,7 +108,7 @@ class _region1 extends State<_MyUserSection > {
                     const SizedBox(
                       height: 15
                     ),
-                     Align(
+                     /*Align(
                        alignment: Alignment.bottomCenter,
                        child:Container(
                         height: 150.0,
@@ -119,9 +120,8 @@ class _region1 extends State<_MyUserSection > {
                           keyboardType: TextInputType.number,
                           decoration: const InputDecoration(labelText: 'Puntos'),
                         ),
-        
                       ),                              
-                      ),
+                      ),*/
                   ]
                 ),
               ),

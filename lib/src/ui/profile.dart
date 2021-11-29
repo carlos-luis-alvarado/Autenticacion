@@ -39,7 +39,7 @@ class Profile extends StatelessWidget {
               isSaving: state.isSaving,
             );
           }
-          return Center(child: CircularProgressIndicator());
+          return Center(child: const CircularProgressIndicator());
         },
       ),
     );
@@ -94,7 +94,7 @@ class _MyUserSectionState extends State<_MyUserSection> {
 
     return SingleChildScrollView(
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
