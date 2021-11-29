@@ -53,9 +53,9 @@ flutter:
     - images/
 
 fonts:
-     - family: Architects Daughter
-       fonts:
-         - asset: assets\fonts\ArchitectsDaughter-Regular.ttf
+  - family: Architects Daughter
+    fonts:
+      - asset: assets\fonts\ArchitectsDaughter-Regular.ttf
 
  
 
