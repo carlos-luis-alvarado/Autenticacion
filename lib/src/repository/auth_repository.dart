@@ -4,10 +4,10 @@ class AuthUser extends Equatable {
   final String uid;
   final String? email;
 
-  AuthUser(this.uid, this.email);
+  const AuthUser(this.uid, this.email);
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [uid];
 }
 

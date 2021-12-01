@@ -100,7 +100,7 @@ class _LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-            backgroundColor: Colors.amber.shade100, //COLOR DE FONDO
+            backgroundColor: Colors.amber.shade200, //COLOR DE FONDO
             body: Center(
             child:GestureDetector(
               onTap: ()=>FocusScope.of(context).unfocus(),

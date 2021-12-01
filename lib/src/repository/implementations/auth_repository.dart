@@ -9,13 +9,13 @@ class AuthRepository extends AuthRepositoryBase {
       user == null ? null : AuthUser(user.uid, user.email);
 
   @override
-  // TODO: implement onOuthStateChanged
+  
   Stream<AuthUser?> get onOuthStateChanged =>
       _firebaseAuth.authStateChanges().asyncMap(_userFromFirebase);
 
   @override
   Future<AuthUser?> signInAnonymously() async {
-    // TODO: implement signInAnonymously
+    
     final user = await _firebaseAuth.signInAnonymously();
     return _userFromFirebase(user.user);
   }

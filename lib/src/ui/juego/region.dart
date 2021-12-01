@@ -7,29 +7,49 @@ import 'package:flutter_application_1/src/navegation/routes.dart';
 import 'package:flutter_application_1/src/repository/implementations/my_user_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class region extends StatelessWidget {
+class region extends StatefulWidget {
 
   const region({Key? key}) : super(key: key);
   static Widget create(BuildContext context) {
     return BlocProvider(
       create: (_) => MyUserCubic(MyUserRepository())..getMyUser(),
-      child: region(),
+      child: const region(),
     );}
 
+  @override
+  State<region> createState() => _regionState();
+}
+
+class _regionState extends State<region> {
+  int _paginaActual=0;
+  //List<Widget>_paginas=[HomeScreem(),IntroScreem()];
   @override
   Widget build(BuildContext context) {
   
     return Scaffold(
       appBar: AppBar(
+             backgroundColor: Colors.green[900],
+             centerTitle: true,
              title: const Text('¡Pulsa una región!',
                 style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'Architects Daughter',
-                  fontSize: 35.0
+                  color: Colors.white,
+                  //fontFamily: 'Architects Daughter',
+                  fontSize: 25.0
                 ),
               ),
-           backgroundColor: Colors.amber.shade400,
            ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
+        onTap: (index)=>setState(()=> _paginaActual=index),
+         currentIndex: _paginaActual,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home),label: 'home',),
+          BottomNavigationBarItem(icon: Icon(Icons.supervised_user_circle),label: 'login')
+        ],
+        backgroundColor: Colors.green.shade500,
+        ),
       body: BlocBuilder<MyUserCubic, MyUserState>(
         builder: (_, state) {
           if (state is MyUserReadyState) {
@@ -72,7 +92,7 @@ class _region1 extends State<_MyUserSection > {
       //height: MediaQuery.of(context).size.height - 200.0,
       decoration: const BoxDecoration(
         image:DecorationImage(//  PONER UNA IMÁGEN DE FONDO
-                    image: AssetImage('images/fondo.jpg',),
+                    image: AssetImage('images/fondo9.png',),
                     fit: BoxFit.cover
                   ),
       ),
@@ -80,7 +100,8 @@ class _region1 extends State<_MyUserSection > {
           backgroundColor: Colors.transparent,
           body:Center(
                 child: Stack(
-                  children:[ const Align(//UBICAR IMÁGEN
+                  children:[ 
+                    const Align(//UBICAR IMÁGEN
                     alignment:Alignment(0.30,-0.7),
                     child: Image(
                     image: AssetImage(
@@ -105,28 +126,20 @@ class _region1 extends State<_MyUserSection > {
                       alignment:const Alignment(-0.20,-0.05),
                       child: _buttonRegion('Yungas')
                     ),
-                    const SizedBox(
-                      height: 15
+                    const Align(//UBICAR IMÁGEN
+                    alignment:Alignment.bottomCenter,
+                    child: Image(
+                    image: AssetImage(
+                         'images/imagen9.png',
                     ),
-                     /*Align(
-                       alignment: Alignment.bottomCenter,
-                       child:Container(
-                        height: 150.0,
-                        padding: const EdgeInsets.all(20.0),
-                        margin: const EdgeInsets.all( 100.0),
-                        decoration: BoxDecoration(color: Colors.amber.shade400, ),
-                        child: TextField(
-                          controller: _puntosController,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(labelText: 'Puntos'),
-                        ),
-                      ),                              
-                      ),*/
+                    width: 300,
+                   ),
+                    ) 
+                     
                   ]
                 ),
               ),
           ), 
-  
         );
   }
     Widget _buttonRegion(String nombre) {
@@ -143,7 +156,7 @@ class _region1 extends State<_MyUserSection > {
             },
             style: ElevatedButton.styleFrom(
                 fixedSize: const Size(95, 95),
-                primary: Colors.green.shade500,
+                primary: Colors.orange,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(100)))
         );
