@@ -30,7 +30,6 @@ dependencies:
   pin_input_text_field: ^4.1.1
   animated_background: ^2.0.0
   cupertino_icons: ^1.0.2
-  
   flutter_meedu: ^4.1.0
   card_swiper : ^1.0.4
   sign_button: ^2.0.1
@@ -56,6 +55,13 @@ fonts:
   - family: Architects Daughter
     fonts:
       - asset: assets\fonts\ArchitectsDaughter-Regular.ttf
+  - family: Ceviche One
+    fonts:
+      - asset: assets\fonts\CevicheOne-Regular.ttf
+
+  - family: Road Rage
+    fonts:
+      - asset: assets\fonts\RoadRage-Regular.ttf
 
  
 

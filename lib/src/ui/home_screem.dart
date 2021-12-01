@@ -26,27 +26,39 @@ class HomeScreem extends StatelessWidget {
               })
         ],
       ),
+      
       body: Container(
         decoration: const BoxDecoration(
         image:DecorationImage(//  PONER UNA IMÁGEN DE FONDO
                     image: AssetImage('images/fondo6.png',),
                     fit: BoxFit.cover
                   ),
-      ),
-        child: Column(
-          children: <Widget>[
-            _SwiperTarjetas(),
+         ),
+        child: Expanded(
+          child:Column(
+          children: [
+            Align(
+                     alignment:Alignment.bottomLeft,
+                     child: _SwiperTarjetas(),
+                     ),
             const Align(
-            alignment:Alignment(0,0),
-                    child: Image(
-                    image: AssetImage(
-                         'images/imagen6.png',
-                    ),
-                    width: 230,
-                   ),),
-                     _ButtonLogin(),
+                     alignment:Alignment.center,
+                     child: Text('para mas información click sobre la imágen')
+                     ),
+                const Align(
+                alignment:Alignment(0,0),
+                   child: Image(
+                   image: AssetImage(
+                        'images/imagen6.png',
+                   ),
+                   width: 230,
+                  ),),
+                 _ButtonLogin(),
           ],
         ),
+         
+         )
+        
       ),
     );
   }
@@ -95,6 +107,5 @@ class _SwiperTarjetas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CardSwiper();
-    ///return CardSwiper(lugares:imgList,);
   }
 }

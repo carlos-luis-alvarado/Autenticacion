@@ -24,25 +24,43 @@ class _CardSwiperState extends State<CardSwiper> {
   Widget build(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;
     return Container(
-      padding: const EdgeInsets.only(top:10.0),
+      padding: const EdgeInsets.only(top:5.0),
       child: ValueListenableBuilder<List<lugar>>(
         valueListenable: Lista.lugares,
         builder:(context,lugares,_) {
            return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const SizedBox(
+            height: 10.0,
+            width: double.infinity,
+          ),
             CarouselSlider(
-              items: lugares.map((item) => GestureDetector(
-                         onTap: () 
-                          {showDialogFunc(context,item.imagen,item.descripcion,item.direccion,item.nombre);},///LLAMAMOS
-                        child: Center(
-                          child: Image.network(
-                            item.imagen,
-                            fit: BoxFit.cover,
-                            width: 20000,
+              items: lugares.map((item) => Column(
+                children: [
+                  GestureDetector(
+                             onTap: () 
+                              {showDialogFunc(context,item.imagen,item.descripcion,item.direccion,item.nombre);},///LLAMAMOS
+                            child: Center(
+                              child: Image.network(
+                                item.imagen,
+                                fit: BoxFit.cover,
+                                width: 20000,
+                              ),
+                            ),
                           ),
+                  SizedBox(
+                      child: Text(
+                        item.nombre,
+                        style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 23.0,
+                              fontFamily:"Ceviche Onee",
+                            ),
                         ),
-                      ))
+                    ),
+                ],
+              ))
                   .toList(),
               options: CarouselOptions(
                 autoPlay: true,
@@ -84,8 +102,8 @@ showDialogFunc(context,imagen,descripcion,direccion,nombre) {
                         borderRadius: BorderRadius.circular(25),
                         child: Image.network(
                             imagen,//lugares[item].imagen,
-                            width: 150,
-                            height: 150,
+                            width: 200,
+                            height: 200,
                         ),
                      ),
                       const SizedBox(

@@ -47,12 +47,11 @@ class _premiosState extends State<premios> {
                   selected = index;
                 });
               },
-<<<<<<< HEAD
               pageController,
               local,
             ))
-          ]),
-=======
+          ]));
+/*
               child: Card(
                 child: Material(
                   elevation: 5,
@@ -106,6 +105,6 @@ class _premiosState extends State<premios> {
           ):const Center(child: CircularProgressIndicator(),);
         },)
 >>>>>>> 42d23411be660c11c2b455825d418a2bad2ede4f
-    );
+    );*/
   }
 }
