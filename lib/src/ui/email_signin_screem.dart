@@ -22,7 +22,7 @@ class _EmailSignIn extends State<EmailSignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ingresar'),
+        title: const Text('Ingresar'),
       ),
       body: BlocBuilder<AuthCubit, AuthState>(
         builder: (_, state) {
@@ -33,28 +33,28 @@ class _EmailSignIn extends State<EmailSignIn> {
               child: Column(
                 children: [
                   if (state is AuthSigningIn)
-                    Center(
+                    const Center(
                       child: CircularProgressIndicator(),
                     ),
                   if (state is AuthError)
                     Text(state.message,
-                        style: TextStyle(color: Colors.red, fontSize: 24)),
+                        style: const TextStyle(color: Colors.red, fontSize: 24)),
                   TextFormField(
                     controller: _emailController,
-                    decoration: InputDecoration(labelText: 'Email'),
+                    decoration: const InputDecoration(labelText: 'Email'),
                     validator: validator,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   TextFormField(
                     controller: _passwordController,
-                    decoration: InputDecoration(labelText: 'Password'),
+                    decoration: const InputDecoration(labelText: 'Password'),
                     validator: validator,
                   ),
                   Center(
                     child: ElevatedButton(
-                      child: Text('Sign In'),
+                      child: const Text('Sign In'),
                       onPressed: () {
                         if (_formKey.currentState?.validate() == true) {
                           context

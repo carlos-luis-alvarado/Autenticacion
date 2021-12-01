@@ -1,3 +1,4 @@
+import 'package:animated_background/animated_background.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/bloc/auth_cubit.dart';
@@ -12,7 +13,7 @@ class resultpage extends StatefulWidget {
   _resultpageState createState() => _resultpageState(marks);
 }
 
-class _resultpageState extends State<resultpage> {
+class _resultpageState extends State<resultpage> with SingleTickerProviderStateMixin  {
   final firestoreInstance = FirebaseFirestore.instance;
   List<String> images = [
     "images/success.png",
@@ -30,7 +31,7 @@ class _resultpageState extends State<resultpage> {
       message = "Deberías esforzarte..\n" + "Puntos Obtenidos $marks";
     } else if (marks < 35) {
       image = images[1];
-      message = "Lo hiciste muy bien..\n" + "Puntos Obtenidos $marks";
+      message = "Esta mal, pero no tan mal..\n" + "Puntos Obtenidos $marks";
     } else {
       image = images[1];
       message = "Lo hiciste muy bien..\n" + "Puntos Obtenidos $marks";
@@ -45,40 +46,52 @@ class _resultpageState extends State<resultpage> {
   @override
   Widget build(BuildContext context) {
     
-    return Scaffold(
-      backgroundColor: Colors.orangeAccent,
-      body: Column(
-        children: <Widget>[
-          // ENCABEZADO
-
-          Expanded(
-              flex: 2,
-              child: Container(
-                alignment: Alignment.center,
-                child: const Text(
-                  "RESULTADO",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
-                    fontSize: 48.0,
-                    fontFamily: "Ceviche One",
+    return Container(
+      decoration: const BoxDecoration(
+        image:DecorationImage(//  PONER UNA IMÁGEN DE FONDO
+                    image: AssetImage('images/fondo4.png',),
+                    fit: BoxFit.cover
                   ),
-                ),
-              )),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,//orangeAccent,
+        body: AnimatedBackground(
+              behaviour:BubblesBehaviour(),
+              vsync: this,
+              child:Column(
+          children: <Widget>[
+            // ENCABEZADO
+            const SizedBox(
+                height: 45.0,
+              ),
+            Expanded(
+                flex: 2,
+                child: Container(
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "RESULTADO",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic,
+                      fontSize: 48.0,
+                      fontFamily: "Ceviche One",
+                    ),
+                  ),
+                )),
 
-          // PARTE CENTRAL
+            // PARTE CENTRAL
 
-          Expanded(
-            flex: 8,
-            child: Material(
-              elevation: 10.0,
-              child: Container(
+            Expanded(
+              flex: 6,
+              child: Material(
+                elevation: 10.0,
                 child: Column(
                   children: <Widget>[
                     Material(
-                      child: Container(
-                        width: 300.0,
-                        height: 300.0,
+                      child: SizedBox(
+                        width: 200.0,
+                        height: 200.0,
                         child: ClipRect(
                           child: Image(
                             image: AssetImage(
@@ -99,8 +112,8 @@ class _resultpageState extends State<resultpage> {
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 20.0,
-                              fontFamily: "Quando",
+                              fontSize: 30.0,
+                              fontFamily:  "Road Rage",
                             ),
                           ),
                         )),
@@ -108,40 +121,40 @@ class _resultpageState extends State<resultpage> {
                 ),
               ),
             ),
-          ),
 
-          // parte final
+            // parte final
 
-          Expanded(
-            flex: 4,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                OutlinedButton(
-                  // botón continuar
+            Expanded(
+              flex: 4,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  OutlinedButton(
+                    // botón continuar
 
-                  style: OutlinedButton.styleFrom(
-                    primary: Colors.white,
-                    backgroundColor: Colors.teal,
-                    shadowColor: Colors.red,
-                    elevation: 10,
-                  ),
-
-                  onPressed: () {
-                    Navigator.pushNamed(context, Routes.initJuego);
-                    //homepage();
-                  },
-                  child: const Text(
-                    "VOLVER A JUGAR",
-                    style: TextStyle(
-                      fontSize: 20.0,
+                    style: OutlinedButton.styleFrom(
+                      primary: Colors.white,
+                      backgroundColor: Colors.black,//teal,
+                      shadowColor: Colors.white,
+                      elevation: 10,
                     ),
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
+
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.initJuego);
+                      inputData(marks);
+                    },
+                    child: const Text(
+                      "VOLVER A JUGAR",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),)
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
+import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/src/ui/juego/resultpage.dart';
@@ -62,7 +63,7 @@ class quizpage extends StatefulWidget {
   _quizpageState createState() => _quizpageState(mydata);
 }
 
-class _quizpageState extends State<quizpage> {
+class _quizpageState extends State<quizpage> with SingleTickerProviderStateMixin {
   final List mydata;
   _quizpageState(this.mydata);
 
@@ -228,81 +229,96 @@ class _quizpageState extends State<quizpage> {
       onWillPop: () async {
         return shouldPop;
       },
-      child: Scaffold(
-        backgroundColor: Colors.green.shade400,
-        //backgroundColor: Colors.amber.shade200,
-        body: Column(
-          children: <Widget>[
-            Expanded(
-              flex: 4,
-              child: Container(
-                padding: EdgeInsets.all(25.0),
-                margin: EdgeInsets.all(40.0),
-                decoration: BoxDecoration(
-                  color: Colors.amber.shade400,
-                  //color: Colors.orange.shade400,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(25.0),
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  mydata[0][i.toString()],
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
-                    fontSize: 24.0,
-                    fontFamily: "Quando",
+      child: Container(
+        decoration: const BoxDecoration(
+        image:DecorationImage(//  PONER UNA IMÁGEN DE FONDO
+                    image: AssetImage('images/fondo8.png',),
+                    fit: BoxFit.cover
                   ),
-                ),
+        ),
+        child: AnimatedBackground(
+              behaviour:RandomParticleBehaviour(),
+              vsync: this,
+              child: Scaffold(
+              backgroundColor: Colors.transparent,
+              //backgroundColor: Colors.amber.shade200,
+              body: Column(
+                children: <Widget>[
+              
+              const SizedBox(
+                height: 40.0,
               ),
-            ),
-            Expanded(
-              flex: 6,
-              child: AbsorbPointer(
-                absorbing: disableAnswer,
+              Expanded(
+                flex: 4,
                 child: Container(
                   padding: EdgeInsets.all(25.0),
-                  margin: EdgeInsets.all(25.0),
+                  margin: EdgeInsets.all(40.0),
                   decoration: BoxDecoration(
                     color: Colors.amber.shade400,
-                    //color: Colors.amber.shade200,
+                    //color: Colors.orange.shade400,
                     shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(30.0),
+                    borderRadius: BorderRadius.circular(25.0),
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      choicebutton('a'),
-                      choicebutton('b'),
-                      choicebutton('c'),
-                      choicebutton('d'),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                padding: EdgeInsets.all(10.0),
-                decoration:
-                    BoxDecoration(color: Colors.white, shape: BoxShape.circle),
-                alignment: Alignment.topCenter,
-                child: Center(
+                  alignment: Alignment.center,
                   child: Text(
-                    showtimer,
+                    mydata[0][i.toString()],
+                    textAlign: TextAlign.center,
                     style: const TextStyle(
-                      fontSize: 35.0,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'Times New Roman',
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic,
+                      fontSize: 24.0,
+                      fontFamily: "Quando",
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
+              Expanded(
+                flex: 7,
+                child: AbsorbPointer(
+                  absorbing: disableAnswer,
+                  child: Container(
+                    padding: EdgeInsets.all(25.0),
+                    margin: EdgeInsets.all(25.0),
+                    decoration: BoxDecoration(
+                      color: Colors.amber.shade400,
+                      //color: Colors.amber.shade200,
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        choicebutton('a'),
+                        choicebutton('b'),
+                        choicebutton('c'),
+                        choicebutton('d'),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  padding: EdgeInsets.all(10.0),
+                  decoration:
+                      BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                  alignment: Alignment.topCenter,
+                  child: Center(
+                    child: Text(
+                      showtimer,
+                      style: const TextStyle(
+                        fontSize: 35.0,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'Times New Roman',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),)
       ),
     );
   }

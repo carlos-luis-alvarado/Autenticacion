@@ -22,21 +22,35 @@ class homepage extends StatefulWidget {
 }
 
 class _homepageState extends State<homepage> {
+   int _paginaActual=0;
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Scaffold(
-        backgroundColor: Colors.amber.shade300,
+        backgroundColor: Colors.amber.shade400,
         appBar: AppBar(
-          backgroundColor: Colors.amber.shade700,
+          centerTitle: true,
+          backgroundColor: Colors.green.shade500,
           title: const Text(
             "REGIÓN QUEBRADA",
             style: TextStyle(
               fontFamily: "Quando",
-              color: Colors.black,
+              color: Colors.white,
             ),
           ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
+        onTap: (index)=>setState(()=> _paginaActual=index),
+         currentIndex: _paginaActual,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home),label: 'home',),
+          BottomNavigationBarItem(icon: Icon(Icons.supervised_user_circle),label: 'login')
+        ],
+        backgroundColor: Colors.green.shade500,
         ),
         //-----
         body: BlocBuilder<MyUserCubic, MyUserState>(builder: (_, state) {
@@ -47,11 +61,10 @@ class _homepageState extends State<homepage> {
               isSaving: state.isSaving,
             );
           }
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }));
   }
 }
-
 //---------------------
 //Parte encargada de manejar los puntos
 class _MyUserSection extends StatefulWidget {
@@ -64,7 +77,6 @@ class _MyUserSection extends StatefulWidget {
   @override
   _MyUserSectionState createState() => _MyUserSectionState();
 }
-
 class _MyUserSectionState extends State<_MyUserSection> {
   int puntosReq1 = 0000;
   int puntosReq2 = 2000;
@@ -82,29 +94,45 @@ class _MyUserSectionState extends State<_MyUserSection> {
   @override
   Widget build(BuildContext context) {
     puntosDisp = int.parse(_puntosController.text);
-    return (ListView(
-      children: <Widget>[
-        Container(
-          padding: const EdgeInsets.all(5.0),
-          margin: const EdgeInsets.all( 5.0),
-          decoration: BoxDecoration(color: Colors.amber.shade400, ),
-          child: TextField(
-            controller: _puntosController,
-            keyboardType: TextInputType.number,
-            decoration: const InputDecoration(labelText: 'PUNTOS ACUMULADOS'),
-          ),
+    return Container(
+      decoration: const BoxDecoration(
+          image:DecorationImage(//  PONER UNA IMÁGEN DE FONDO
+                      image: AssetImage('images/fondo6.png',),
+                      fit: BoxFit.cover
+                    ),
         ),
-
-        Image.asset(
-            'images/coyita2.png',
-            width: 200,
-            height: 200,
+      child: (ListView(
+        children: <Widget>[
+          Container(
+            
+            padding: const EdgeInsets.all(5.0),
+            margin: const EdgeInsets.all( 5.0),
+           // decoration: BoxDecoration(color: Colors.amber.shade300, ),
+            child: TextField(
+              controller: _puntosController,
+              keyboardType: TextInputType.number,
+              enabled: false,
+              decoration: const InputDecoration(
+                labelText: 'PUNTOS ACUMULADOS',
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color:Colors.green)
+                ),
+                //labelStyle: 
+                //icon:Icon(Icons.favorite,color: Colors.black) 
+                ),
+            ),
           ),
-        customcard("NIVEL 1", images[0], puntosDisp, puntosReq1),
-        customcard("NIVEL 2", images[1], puntosDisp, puntosReq2),
-        customcard("NIVEL 3", images[2], puntosDisp, puntosReq3),
-      ],
-    ));
+          Image.asset(
+              'images/imagen10.png',
+              width: 200,
+              height: 200,
+            ),
+          customcard("NIVEL 1", images[0], puntosDisp, puntosReq1),
+          customcard("NIVEL 2", images[1], puntosDisp, puntosReq2),
+          customcard("NIVEL 3", images[2], puntosDisp, puntosReq3),
+        ],
+      )),
+    );
   }
   List<String> images = [
     "images/carnaval.jpg",
@@ -114,7 +142,6 @@ class _MyUserSectionState extends State<_MyUserSection> {
   Widget customcard(String langname, String image, int puntosDisp,
       int puntosReq) {
     return Padding(
-      
       padding: const EdgeInsets.symmetric(
         vertical: 6.0,
         horizontal: 50.0,
@@ -136,62 +163,59 @@ class _MyUserSectionState extends State<_MyUserSection> {
           }
         },
         child: Material(
-          color: Colors.blue,//green[700],
+          color: Colors.green[500],
           elevation: 10.0,
           borderRadius: BorderRadius.circular(25.0),
-          child: Container(
-            child: Column(
-              children: <Widget>[
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 10.0,
-                      ),
-                      child: Material(
-                        elevation: 5.0,
-                        borderRadius: BorderRadius.circular(100.0),
-                        child: Container(
-                          // changing from 200 to 150 as to look better
-                          height: 45.0,
-                          width: 45.0,
-                          child: ClipOval(
-                            child: Image(
-                              fit: BoxFit.cover,
-                              image: AssetImage(
-                                image,
-                              ),
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 10.0,
+                    ),
+                    child: Material(
+                      elevation: 5.0,
+                      borderRadius: BorderRadius.circular(100.0),
+                      child: SizedBox(
+                        height: 45.0,
+                        width: 45.0,
+                        child: ClipOval(
+                          child: Image(
+                            fit: BoxFit.cover,
+                            image: AssetImage(
+                              image,
                             ),
                           ),
                         ),
                       ),
                     ),
-                    Column(
-                      children: [
-                        Text(
-                            langname ,
-                            style: const TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.white,
-                              fontFamily: "Quando",
-                              fontWeight: FontWeight.w700,
-                            ),
-                        ),
-                        Text(
-                            'Puntos necesarios : ' + puntosReq.toString(),
-                            style: const TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.black,
-                              fontFamily: "Quando",
-                              fontWeight: FontWeight.w700,
-                            ),
                   ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                  Column(
+                    children: [
+                      Text(
+                          langname ,
+                          style: const TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontFamily: "Quando",
+                            fontWeight: FontWeight.w700,
+                          ),
+                      ),
+                      Text(
+                          'Puntos necesarios : ' + puntosReq.toString(),
+                          style: const TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.black,
+                            fontFamily: "Quando",
+                            fontWeight: FontWeight.w700,
+                          ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

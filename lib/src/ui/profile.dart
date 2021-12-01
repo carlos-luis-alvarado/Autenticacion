@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/bloc/auth_cubit.dart';
@@ -21,10 +20,13 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('home page'),
+        title: const Text('Datos de usuario'),
+        backgroundColor: Colors.cyan,
+        //backgroundColor: Colors.green.shade500,
+        centerTitle: true,
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             tooltip: 'Logout',
             onPressed: () => context.read<AuthCubit>().signOut(),
           ),
@@ -39,7 +41,7 @@ class Profile extends StatelessWidget {
               isSaving: state.isSaving,
             );
           }
-          return Center(child: const CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );
@@ -66,7 +68,7 @@ class _MyUserSectionState extends State<_MyUserSection> {
   @override
   void initState() {
     _nameController.text = widget.user?.name ?? '';
-    _lastNameController.text = widget.user?.name ?? '';
+    _lastNameController.text = widget.user?.lastname ?? '';
     _puntosController.text = widget.user?.puntos.toString() ?? '';
     super.initState();
   }
@@ -87,14 +89,21 @@ class _MyUserSectionState extends State<_MyUserSection> {
         imageUrl: widget.user!.image!,
         progressIndicatorBuilder: (_, __, progress) =>
             CircularProgressIndicator(value: progress.progress),
-        errorWidget: (_, __, ___) => Icon(Icons.error),
+        errorWidget: (_, __, ___) => const Icon(Icons.error),
         fit: BoxFit.fill,
       );
     }
-
-    return SingleChildScrollView(
-      child: Container(
-        padding: const EdgeInsets.all(16),
+    return Container(
+        decoration: const BoxDecoration(
+        image:DecorationImage(//  PONER UNA IMÁGEN DE FONDO
+                    image: AssetImage('images/fondo4.png',),
+                    fit: BoxFit.cover
+                  ),
+        ),
+        padding: const EdgeInsets.all(20),
+        child:Scaffold(
+              backgroundColor: Colors.transparent,
+              body:SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -107,7 +116,7 @@ class _MyUserSectionState extends State<_MyUserSection> {
               },
               child: Center(
                 child: ClipOval(
-                  child: Container(
+                  child: SizedBox(
                     width: 150,
                     height: 150,
                     child: image,
@@ -115,7 +124,7 @@ class _MyUserSectionState extends State<_MyUserSection> {
                 ),
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 10),
             BlocBuilder<AuthCubit, AuthState>(
                 buildWhen: (_, current) => current is AuthSignedIn,
                 builder: (_, state) {
@@ -123,23 +132,25 @@ class _MyUserSectionState extends State<_MyUserSection> {
                     child: Text('UID: ${(state as AuthSignedIn).user.uid}'),
                   );
                 }),
-            SizedBox(height: 8),
+            const SizedBox(height: 20),
             TextField(
               controller: _nameController,
-              decoration: InputDecoration(labelText: 'Nombre'),
+              decoration: const InputDecoration(labelText: 'Nombre',icon:Icon(Icons.person_add,color: Colors.black,)),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             TextField(
               controller: _lastNameController,
-              decoration: InputDecoration(labelText: 'Apellido'),
+              decoration: const InputDecoration(labelText: 'Apellido',icon:Icon(Icons.person_add,color: Colors.black,)),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             TextField(
+              enabled: false,
               controller: _puntosController,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(labelText: 'Puntos'),
+              decoration: const InputDecoration(labelText: 'Puntos',icon:Icon(Icons.favorite,color: Colors.black)),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 20),
+
             Stack(
               children: [
                 ElevatedButton(
@@ -155,13 +166,21 @@ class _MyUserSectionState extends State<_MyUserSection> {
                                 _lastNameController.text,
                                 int.tryParse(_puntosController.text) ?? 0);
                           },
-                    child: Text('Guardar')),
-                if (widget.isSaving) CircularProgressIndicator(),
+                    child: const Text('Guardar'),
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: const Size(150, 40),
+                        primary: Colors.cyan,
+                        //primary: Colors.green.shade500,
+                        shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50))
+                      )
+                    ),
+                if (widget.isSaving) const CircularProgressIndicator(),
               ],
             )
           ],
         ),
-      ),
+      ),)
     );
   }
 }

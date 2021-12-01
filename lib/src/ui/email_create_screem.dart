@@ -47,14 +47,13 @@ class _EmailCreateState extends State<EmailCreate> {
           BottomNavigationBarItem(icon: Icon(Icons.person),label: 'login'),
           BottomNavigationBarItem(icon: Icon(Icons.supervised_user_circle),label: 'login')
         ],
-  
         backgroundColor: Colors.green.shade500,
         ),
       body: BlocBuilder<AuthCubit, AuthState>(
         builder: (_, state) {
           return SafeArea(
               child: Scaffold(
-              backgroundColor: Colors.amber.shade100,
+              backgroundColor: Colors.amber.shade200,
               body: Center(
                 child: Form(
             key: _formKey,
@@ -165,6 +164,5 @@ class _EmailCreateState extends State<EmailCreate> {
     });
   }
   void ontabTapped(int index){
-
   }
 }

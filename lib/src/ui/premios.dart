@@ -48,7 +48,7 @@ class _premiosState extends State<premios> {
                   borderRadius: BorderRadius.circular(40.0),
                   child: Row(
                     children: <Widget>[
-                      Container(
+                      SizedBox(
                         width: 80.0,
                         height: 80.0,
                         child: ClipRRect(
@@ -72,7 +72,7 @@ class _premiosState extends State<premios> {
                             const SizedBox(
                               height: 8,
                             ),
-                            Container(
+                            SizedBox(
                               width: width,
                               child: Text(
                                 locales[index].descripcion,
