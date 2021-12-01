@@ -47,7 +47,7 @@ class Food {
       Food(
           'images/helapana.jfif',
           '1000 puntos: 20% de descuento',
-          'Helapaana',
+          'Helapana',
           'Tus puntos: ',
           2000,
           'Region La Quebrada',

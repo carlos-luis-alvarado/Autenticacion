@@ -47,65 +47,10 @@ class _premiosState extends State<premios> {
                   selected = index;
                 });
               },
-<<<<<<< HEAD
               pageController,
               local,
             ))
           ]),
-=======
-              child: Card(
-                child: Material(
-                  elevation: 5,
-                  borderRadius: BorderRadius.circular(40.0),
-                  child: Row(
-                    children: <Widget>[
-                      SizedBox(
-                        width: 80.0,
-                        height: 80.0,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(25),
-                          child: Image.network(locales[index].imagen),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              locales[index].nombre,
-                              style: const TextStyle(
-                                fontSize: 20,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            SizedBox(
-                              width: width,
-                              child: Text(
-                                locales[index].descripcion,
-                                style: const TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            );
-          }
-          ):const Center(child: CircularProgressIndicator(),);
-        },)
->>>>>>> 42d23411be660c11c2b455825d418a2bad2ede4f
     );
   }
 }
