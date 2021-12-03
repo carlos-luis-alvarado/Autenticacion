@@ -26,7 +26,6 @@ class HomeScreem extends StatelessWidget {
               })
         ],
       ),
-      
       body: Container(
         decoration: const BoxDecoration(
         image:DecorationImage(//  PONER UNA IMÁGEN DE FONDO
@@ -41,25 +40,22 @@ class HomeScreem extends StatelessWidget {
                      alignment:Alignment.bottomLeft,
                      child: _SwiperTarjetas(),
                      ),
-            const Align(
-                     alignment:Alignment.center,
-                     child: Text('para mas información click sobre la imágen')
-                     ),
                 const Align(
-                alignment:Alignment(0,0),
-                   child: Image(
-                   image: AssetImage(
-                        'images/imagen6.png',
-                   ),
-                   width: 230,
-                  ),),
-                 _ButtonLogin(),
-          ],
-        ),
-         
-         )
-        
-      ),
+                    alignment: Alignment.center,
+                    child: Text('para mas información click sobre la imágen')),
+                const Align(
+                  alignment: Alignment(0, 0),
+                  child: Image(
+                    image: AssetImage(
+                      'images/imagen6.png',
+                    ),
+                    width: 230,
+                  ),
+                ),
+                _ButtonLogin(),
+              ],
+            ),
+          )),
     );
   }
 }
@@ -99,6 +95,7 @@ class _ButtonLogin extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50)))),
       ]);
+
     });
   }
 }

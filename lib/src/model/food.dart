@@ -18,7 +18,7 @@ class Food {
     return [
       Food(
           'images/descarga.jfif',
-          '1000 puntos: 20% de descuento',
+          '500 puntos: 20% de descuento',
           'Grido',
           'Tus puntos: ',
           2000,
@@ -46,7 +46,7 @@ class Food {
           hightLight: true),
       Food(
           'images/helapana.jfif',
-          '1000 puntos: 20% de descuento',
+          '500 puntos: 25% de descuento',
           'Helapana',
           'Tus puntos: ',
           2000,
@@ -74,7 +74,7 @@ class Food {
           hightLight: true),
       Food(
           'images/viabana.jfif',
-          '1000 puntos: 20% de descuento',
+          '500 puntos: 30% de descuento',
           'Viabana',
           'Tus puntos: ',
           2000,
@@ -107,7 +107,7 @@ class Food {
     return [
       Food(
           'images/buendia.jfif',
-          '1000 puntos: 20% de descuento',
+          '800 puntos: 20% de descuento',
           'Buen Dia',
           'Tus puntos: ',
           2000,
@@ -135,7 +135,7 @@ class Food {
           hightLight: true),
       Food(
           'images/alameda.png',
-          '1000 puntos: 20% de descuento',
+          '800 puntos: 30% de descuento',
           'Alameda',
           'Tus puntos: ',
           2000,
@@ -196,7 +196,7 @@ class Food {
           hightLight: true),
       Food(
           'images/lacomarca.jpg',
-          '1000 puntos: 20% de descuento',
+          '1000 puntos: 25% de descuento',
           'La comarca',
           'Tus puntos: ',
           2000,
