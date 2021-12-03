@@ -65,6 +65,7 @@ class quizpage extends StatefulWidget {
 
 class _quizpageState extends State<quizpage> with SingleTickerProviderStateMixin {
   final List mydata;
+  final contadorPreg=0;
   _quizpageState(this.mydata);
 
   Color colortoshow = Colors.indigoAccent;
@@ -175,6 +176,7 @@ class _quizpageState extends State<quizpage> with SingleTickerProviderStateMixin
     //chequea que las preguntas
     if (mydata[2][i.toString()] == mydata[1][i.toString()][k]) {
       marks = marks + 5; //suma puntaje
+      //contadorPreg=contadorPreg+1;
       // cambiando la variable de color a verde debido a que es correcta
       colortoshow = right;
     } else {

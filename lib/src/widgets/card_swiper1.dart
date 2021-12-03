@@ -130,7 +130,8 @@ showDialogFunc(context,imagen,descripcion,direccion,nombre) {
                         style: const TextStyle(
                         fontSize: 15,
                          color: Colors.black,
-                       )),
+                       )
+                      ),
                 ]),
           ),
         ));
