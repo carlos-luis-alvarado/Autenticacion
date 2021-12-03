@@ -31,109 +31,115 @@ class _EmailCreateState extends State<EmailCreate> {
   @override
   Widget build(BuildContext context) {
     
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Crear cuenta'),
-        backgroundColor: Colors.green.shade500,
-        centerTitle: true,
+    return Container(
+      decoration: const BoxDecoration(
+        image:DecorationImage(//  PONER UNA IMÁGEN DE FONDO
+                    image: AssetImage('images/color2.jpg',),
+                    fit: BoxFit.cover
+                  ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white70,
-        onTap: (index)=>setState(()=> _paginaActual=index),
-         currentIndex: _paginaActual,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.person),label: 'login'),
-          BottomNavigationBarItem(icon: Icon(Icons.supervised_user_circle),label: 'login')
-        ],
-        backgroundColor: Colors.green.shade500,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          title: const Text('Crear cuenta'),
+          backgroundColor: Colors.green.shade500,
+          centerTitle: true,
         ),
-      body: BlocBuilder<AuthCubit, AuthState>(
-        builder: (_, state) {
-          return SafeArea(
-              child: Scaffold(
-              backgroundColor: Colors.amber.shade200,
-              body: Center(
-                child: Form(
-            key: _formKey,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: GestureDetector(
-              onTap: ()=>FocusScope.of(context).unfocus(),
-              child:ListView(
-                children: [
-                  const Flexible(   //se define el logo
-              child: Image(
-                image: AssetImage(
-                  'images/crearlogo.png', 
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white70,
+          onTap: (index)=>setState(()=> _paginaActual=index),
+           currentIndex: _paginaActual,
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.person),label: 'login'),
+            BottomNavigationBarItem(icon: Icon(Icons.supervised_user_circle),label: 'login')
+          ],
+          backgroundColor: Colors.green.shade500,
+          ),
+        body: BlocBuilder<AuthCubit, AuthState>(
+          builder: (_, state) {
+            return SafeArea(
+                child: Scaffold(
+                backgroundColor: Colors.transparent,
+                body: Center(
+                  child: Form(
+              key: _formKey,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: GestureDetector(
+                onTap: ()=>FocusScope.of(context).unfocus(),
+                child:ListView(
+                  children: [
+                    const Flexible(   //se define el logo
+                child: Image(
+                  image: AssetImage(
+                    'images/logo (2).png',
+                  ),
+                  width: 150.0,
+                  height: 150.0,
                 ),
-                width: 100.0,
-                height: 150.0,
               ),
-            ),
-            const SizedBox(height: 10.0,width: double.infinity,),//se define nombre de la app
-            const Center(
-              child:  Text('AVJujuy',
-              style: TextStyle(fontFamily: 'Architects Daughter', color: Colors.black,fontSize: 30.0,),),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-                  if (state is AuthSigningIn)
-                    const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  if (state is AuthError)
-                    Text(state.message,
-                        style: const TextStyle(color: Colors.red, fontSize: 24)),
-                  TextFormField(
-                    controller: _emailController,
-                    decoration: const InputDecoration(
-                      icon:Icon(Icons.email),
-                          labelText: 'Email',
-                          hintText:'ejemplo@correo.com',
-                      ),
-                    validator: emailValidator,
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  TextFormField(
-                    controller: _passwordController,
-                     obscureText:true,
-                    decoration: const InputDecoration(
-                      labelText: 'Password',
-                          hintText:'Password',
-                          icon: Icon(Icons.lock_outline),
-                      ),
-                    validator: passwordValidator,
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  TextFormField(
-                    controller: _repeatPasswordController,
-                     obscureText:true,
-                    decoration: const InputDecoration(
-                      labelText: 'Repeat Password',
-                          hintText:'Repeat Password',
-                          icon: Icon(Icons.lock_outline),
-                      ),
-                    validator: passwordValidator,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Center(
-                    child:_buttonRegister()
-                    ),
-                  
-                ],
+              const SizedBox(height: 10.0,width: double.infinity,),//se define nombre de la app
+             
+              const SizedBox(
+                height: 10.0,
               ),
-            ),)
-          ))));
-        },
+                    if (state is AuthSigningIn)
+                      const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    if (state is AuthError)
+                      Text(state.message,
+                          style: const TextStyle(color: Colors.red, fontSize: 24)),
+                    TextFormField(
+                      controller: _emailController,
+                      decoration: const InputDecoration(
+                        icon:Icon(Icons.email),
+                            labelText: 'Email',
+                            hintText:'ejemplo@correo.com',
+                        ),
+                      validator: emailValidator,
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    TextFormField(
+                      controller: _passwordController,
+                       obscureText:true,
+                      decoration: const InputDecoration(
+                        labelText: 'Password',
+                            hintText:'Password',
+                            icon: Icon(Icons.lock_outline),
+                        ),
+                      validator: passwordValidator,
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    TextFormField(
+                      controller: _repeatPasswordController,
+                       obscureText:true,
+                      decoration: const InputDecoration(
+                        labelText: 'Repeat Password',
+                            hintText:'Repeat Password',
+                            icon: Icon(Icons.lock_outline),
+                        ),
+                      validator: passwordValidator,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Center(
+                      child:_buttonRegister()
+                      ),
+                    
+                  ],
+                ),
+              ),)
+            ))));
+          },
+        ),
       ),
     );
     

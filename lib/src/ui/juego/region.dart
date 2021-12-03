@@ -28,7 +28,7 @@ class _regionState extends State<region> {
   
     return Scaffold(
       appBar: AppBar(
-             backgroundColor: Colors.green[900],
+             backgroundColor: Colors.pink[800],
              centerTitle: true,
              title: const Text('¡Pulsa una región!',
                 style: TextStyle(
@@ -48,7 +48,7 @@ class _regionState extends State<region> {
           BottomNavigationBarItem(icon: Icon(Icons.home),label: 'home',),
           BottomNavigationBarItem(icon: Icon(Icons.supervised_user_circle),label: 'login')
         ],
-        backgroundColor: Colors.green.shade500,
+        backgroundColor: Colors.pink[800],
         ),
       body: BlocBuilder<MyUserCubic, MyUserState>(
         builder: (_, state) {
@@ -92,7 +92,7 @@ class _region1 extends State<_MyUserSection > {
       //height: MediaQuery.of(context).size.height - 200.0,
       decoration: const BoxDecoration(
         image:DecorationImage(//  PONER UNA IMÁGEN DE FONDO
-                    image: AssetImage('images/fondo9.png',),
+                    image: AssetImage('images/color1.jpg',),
                     fit: BoxFit.cover
                   ),
       ),
@@ -130,7 +130,7 @@ class _region1 extends State<_MyUserSection > {
                     alignment:Alignment.bottomCenter,
                     child: Image(
                     image: AssetImage(
-                         'images/imagen9.png',
+                         'images/imagen10.png',
                     ),
                     width: 300,
                    ),
@@ -148,7 +148,7 @@ class _region1 extends State<_MyUserSection > {
         return ElevatedButton(
             child: Text(nombre,
               style: const TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                     ),),
             onPressed: () {
               Navigator.pushNamed(context, Routes.homeJuego);
@@ -156,7 +156,7 @@ class _region1 extends State<_MyUserSection > {
             },
             style: ElevatedButton.styleFrom(
                 fixedSize: const Size(95, 95),
-                primary: Colors.orange,
+                primary: Colors.blue[800],
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(100)))
         );

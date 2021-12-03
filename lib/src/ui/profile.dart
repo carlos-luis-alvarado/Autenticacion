@@ -21,7 +21,7 @@ class Profile extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Datos de usuario'),
-        backgroundColor: Colors.cyan,
+        backgroundColor: Colors.cyan[900],
         //backgroundColor: Colors.green.shade500,
         centerTitle: true,
         actions: [
@@ -96,7 +96,7 @@ class _MyUserSectionState extends State<_MyUserSection> {
     return Container(
         decoration: const BoxDecoration(
         image:DecorationImage(//  PONER UNA IMÁGEN DE FONDO
-                    image: AssetImage('images/fondo4.png',),
+                    image: AssetImage('images/color2.jpg',),
                     fit: BoxFit.cover
                   ),
         ),
@@ -169,7 +169,7 @@ class _MyUserSectionState extends State<_MyUserSection> {
                     child: const Text('Guardar'),
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(150, 40),
-                        primary: Colors.cyan,
+                        primary: Colors.cyan[900],
                         //primary: Colors.green.shade500,
                         shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50))

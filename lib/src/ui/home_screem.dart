@@ -11,7 +11,7 @@ class HomeScreem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green.shade500,
+        backgroundColor: Colors.pink[800],
         title: const Text('Conozcamos jujuy'),
         centerTitle: true,
         actions: [
@@ -30,7 +30,7 @@ class HomeScreem extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
         image:DecorationImage(//  PONER UNA IMÁGEN DE FONDO
-                    image: AssetImage('images/fondo6.png',),
+                    image: AssetImage('images/color4.jpg',),
                     fit: BoxFit.cover
                   ),
          ),
@@ -82,7 +82,7 @@ class _ButtonLogin extends StatelessWidget {
             label: const Text('jugar'),
             style: ElevatedButton.styleFrom(
                 fixedSize: const Size(140, 30),
-                primary: Colors.green.shade500,
+                primary: Colors.pink[800],
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50)))),
         ElevatedButton.icon(
@@ -95,14 +95,13 @@ class _ButtonLogin extends StatelessWidget {
             label: const Text('Premios'),
             style: ElevatedButton.styleFrom(
                 fixedSize: const Size(140, 40),
-                primary: Colors.green.shade500,
+                primary: Colors.blue[800],
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50)))),
       ]);
     });
   }
 }
-
 class _SwiperTarjetas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

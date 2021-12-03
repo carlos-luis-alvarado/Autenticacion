@@ -76,8 +76,8 @@ class _quizpageState extends State<quizpage> with SingleTickerProviderStateMixin
   bool disableAnswer = false;
   // varibale extra para iterar
   int j = 1;
-  int timer = 30;
-  String showtimer = "30";
+  int timer = 15;
+  String showtimer = "15";
   var random_array;
 
   Map<String, Color> btncolor = {
@@ -149,7 +149,7 @@ class _quizpageState extends State<quizpage> with SingleTickerProviderStateMixin
   //MUESTRA SIGUIENTE PREGUNTA
   void nextquestion() {
     canceltimer = false;
-    timer = 30; //inicializa el tiempo en 30 segundos
+    timer = 15; //inicializa el tiempo en 15 segundos
     setState(() {
       if (j < 5) {
         //controla que las preguntas sean solo 5
@@ -176,7 +176,6 @@ class _quizpageState extends State<quizpage> with SingleTickerProviderStateMixin
     //chequea que las preguntas
     if (mydata[2][i.toString()] == mydata[1][i.toString()][k]) {
       marks = marks + 5; //suma puntaje
-      //contadorPreg=contadorPreg+1;
       // cambiando la variable de color a verde debido a que es correcta
       colortoshow = right;
     } else {
@@ -285,7 +284,7 @@ class _quizpageState extends State<quizpage> with SingleTickerProviderStateMixin
                       color: Colors.amber.shade400,
                       //color: Colors.amber.shade200,
                       shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(30.0),
+                      borderRadius: BorderRadius.circular(15.0),
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

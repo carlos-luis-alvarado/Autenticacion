@@ -53,8 +53,9 @@ class _CardSwiperState extends State<CardSwiper> {
                       child: Text(
                         item.nombre,
                         style: const TextStyle(
+                              color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: 23.0,
+                              fontSize: 24.0,
                               fontFamily:"Ceviche Onee",
                             ),
                         ),
