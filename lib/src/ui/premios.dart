@@ -49,8 +49,15 @@ class _premiosState extends State<premios> {
               },
               pageController,
               local,
+<<<<<<< HEAD
             ))
           ]),
+=======
+              )
+            )
+        ]
+      )
+>>>>>>> 093f57c24a0d3b5372838cc07274294853dd6fed
     );
   }
 }
