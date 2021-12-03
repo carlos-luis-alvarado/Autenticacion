@@ -26,40 +26,38 @@ class HomeScreem extends StatelessWidget {
               })
         ],
       ),
-      
       body: Container(
-        decoration: const BoxDecoration(
-        image:DecorationImage(//  PONER UNA IMÁGEN DE FONDO
-                    image: AssetImage('images/fondo6.png',),
-                    fit: BoxFit.cover
-                  ),
-         ),
-        child: Expanded(
-          child:Column(
-          children: [
-            Align(
-                     alignment:Alignment.bottomLeft,
-                     child: _SwiperTarjetas(),
-                     ),
-            const Align(
-                     alignment:Alignment.center,
-                     child: Text('para mas información click sobre la imágen')
-                     ),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+                //  PONER UNA IMÁGEN DE FONDO
+                image: AssetImage(
+                  'images/fondo6.png',
+                ),
+                fit: BoxFit.cover),
+          ),
+          child: Expanded(
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: _SwiperTarjetas(),
+                ),
                 const Align(
-                alignment:Alignment(0,0),
-                   child: Image(
-                   image: AssetImage(
-                        'images/imagen6.png',
-                   ),
-                   width: 230,
-                  ),),
-                 _ButtonLogin(),
-          ],
-        ),
-         
-         )
-        
-      ),
+                    alignment: Alignment.center,
+                    child: Text('para mas información click sobre la imágen')),
+                const Align(
+                  alignment: Alignment(0, 0),
+                  child: Image(
+                    image: AssetImage(
+                      'images/imagen6.png',
+                    ),
+                    width: 230,
+                  ),
+                ),
+                _ButtonLogin(),
+              ],
+            ),
+          )),
     );
   }
 }
@@ -70,35 +68,35 @@ class _ButtonLogin extends StatelessWidget {
     return StreamBuilder(
         builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-        ElevatedButton.icon(
-            onPressed: () {
-              Navigator.pushNamed(context, Routes.initJuego);
-            },
-            icon: const Icon(
-              Icons.input_outlined,
-            ),
-            label: const Text('jugar'),
-            style: ElevatedButton.styleFrom(
-                fixedSize: const Size(140, 30),
-                primary: Colors.green.shade500,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50)))),
-        ElevatedButton.icon(
-            onPressed: () {
-              Navigator.pushNamed(context, Routes.premiosJ);
-            },
-            icon: const Icon(
-              Icons.input_outlined,
-            ),
-            label: const Text('Premios'),
-            style: ElevatedButton.styleFrom(
-                fixedSize: const Size(140, 40),
-                primary: Colors.green.shade500,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50)))),
-      ]);
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.initJuego);
+                },
+                icon: const Icon(
+                  Icons.input_outlined,
+                ),
+                label: const Text('jugar'),
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(140, 30),
+                    primary: Colors.green.shade500,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)))),
+            ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.premiosJ);
+                },
+                icon: const Icon(
+                  Icons.input_outlined,
+                ),
+                label: const Text('Premios'),
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(140, 40),
+                    primary: Colors.green.shade500,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)))),
+          ]);
     });
   }
 }

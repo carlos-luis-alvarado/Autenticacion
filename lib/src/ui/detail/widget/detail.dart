@@ -26,25 +26,6 @@ class DetailPage extends StatelessWidget {
               FoodDetail(
                 food,
               ),
-              Expanded(
-                  child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                      ),
-                      width: 200,
-                      child: ElevatedButton.icon(
-                          onPressed: () {
-                            showDialogFun(context, food.name);
-                          },
-                          icon: const Icon(
-                            Icons.input_outlined,
-                          ),
-                          label: const Text('Canjear'),
-                          style: ElevatedButton.styleFrom(
-                              fixedSize: const Size(140, 40),
-                              primary: Colors.green.shade500,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(50))))))
             ],
           ),
         ));

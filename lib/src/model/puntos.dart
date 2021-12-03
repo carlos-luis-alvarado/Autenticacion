@@ -11,7 +11,7 @@ class Puntos {
       this.name, this.label, this.logourl, this.desc, this.score, this.locales);
   static Puntos generarCategorias() {
     return Puntos('Reclama tu premio', 'Puntos obtenidos',
-        'images/crearlogo.png', 'Selecciona una categoria', 1000, {
+        'images/crearlogo.png', 'Selecciona una categoria', 500, {
       'Heladeria': Food.generarHeladerias(),
       'Panaderia': Food.generarPanaderias(),
       'Restaurantes': Food.generarRestaurante(),
